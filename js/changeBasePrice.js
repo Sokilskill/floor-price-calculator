@@ -15,3 +15,7 @@ const changePrice = (newPrice) => {
     basePriceInput.value = basePrice;
   }
 };
+
+export function getBasePrice() {
+  return basePrice;
+}
