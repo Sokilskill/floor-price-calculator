@@ -1,9 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+
     <title>QA test</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="header-title">
+          Калькулятор знижок відповідно до обраної кількістю поверхів
+        </h1>
+      </header>
+
+      <main class="main">
+        <p class="main-text">
+          Цей калькулятор дозволяє розрахувати вартість будівництва з
+          урахуванням знижок на основі кількості поверхів. Ви можете змінити
+          базову ціну будівництва, і калькулятор автоматично перерахує вартість
+          зі знижкою.
+        </p>
+
+        <section class="card">
+          <h2 class="card-title">Умови нарахування знижки:</h2>
+          <ul class="list">
+            <li class="list-item">
+              Базова ціна:
+              <input
+                type="number"
+                id="base-price"
+                value="80"
+                min="50"
+                max="1000"
+                class="price-input"
+              />
+              кристалів (50-1000)
+            </li>
+            <li>1-20 поверхів: ціна без знижки (n)</li>
+            <li>21-50 поверхів: знижка 15% (n - 15%)</li>
+            <li>51-54 поверхів: знижка 17% (n - 17%)</li>
+            <li>55-75 поверхів: знижка 20% (n - 20%)</li>
+            <li>75 поверхів: знижка 25% (n - 25%)</li>
+            <li>76-100 поверхів: знижка 30% (n - 30%)</li>
+          </ul>
+        </section>
+
+        <section class="input-container correct">
+          <h2 class="section-title section-title-green">
+            Коректний калькулятор
+          </h2>
+          <div class="input-group">
+            <label for="correct-input" class="label">Кількість поверхів:</label>
+            <input
+              type="number"
+              id="correct-input"
+              min="1"
+              max="100"
+              class="text-input"
+              placeholder="Введіть кількість поверхів"
+            />
+            <p id="correct-error" class="error hidden">
+              Будь ласка, введіть ціле число від 1 до 100
+            </p>
+          </div>
+          <button
+            id="correct-calculate"
+            type="button"
+            class="button button-green"
+          >
+            Розрахувати вартість
+          </button>
+          <div id="correct-result" class="result hidden">
+            <p>
+              Ваша знижка:
+              <span id="correct-discount" class="font-bold">0</span>%
+            </p>
+            <p>
+              Вартість зі знижкою:
+              <span id="correct-final-price" class="font-bold">0</span>
+              кристалів
+            </p>
+          </div>
+        </section>
+
+        <section class="input-container buggy">
+          <h2 class="section-title section-title-red">
+            Калькулятор для тестування (З помилками)
+          </h2>
+          <div class="input-group">
+            <label for="buggy-input" class="label">Кількість поверхів:</label>
+            <input
+              type="text"
+              id="buggy-input"
+              class="text-input"
+              placeholder="Введіть кількість поверхів"
+            />
+            <p id="buggy-error" class="error hidden">
+              Повідомлення про помилку
+            </p>
+          </div>
+          <button id="buggy-calculate" type="button" class="button button-red">
+            Розрахувати вартість
+          </button>
+          <div id="buggy-result" class="result hidden">
+            <p>
+              Ваша знижка: <span id="buggy-discount" class="font-bold">0</span>%
+            </p>
+            <p>
+              Вартість зі знижкою:
+              <span id="buggy-final-price" class="font-bold">0</span> кристалів
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/js/changeBasePrice.js"></script>
+    <script src="/js/correctCalculator.js"></script>
+    <script src="/js/buggyCalculator.js"></script>
+  </body>
 </html>
